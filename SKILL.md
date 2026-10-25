@@ -17,6 +17,7 @@ Read only the relevant resources:
 
 * [PE rules](references/pe.md) for exam testing, reports, and responses.
 * [Standards](references/standards.md) for Java, Git, Markdown, or documentation review.
+* [Review issue catalogue](references/review-issues.md) for code/PR issue patterns, severity ratings, and fixes.
 * [Course review lenses and notes index](references/course-notes.md) for design, tests, debugging, and UML. Use the bundled synthesis directly; no external notes folder is required.
 
 The references summarize all eight supplied sources for offline or quick use. When online, recheck administrative rules for an actual PE or grading decision, especially phases, limits, runtime, and submission instructions. Offline, continue with the summaries; flag decisions requiring uncached details or current rules. Use current course requirements over conflicting notes; project conventions fill gaps without silently overriding course requirements. Do not invent rules or mark deductions.
@@ -35,7 +36,7 @@ Run from the skill folder, or use the script's absolute path. Use `python3` on m
 
 Trace changed behavior through parsing, commands, model, storage, and UI where relevant. Check applicable standards manually as well as using the project's existing checks. Inspect the build/CI configuration before choosing commands: use `gradlew.bat` on Windows and `./gradlew` on macOS for Gradle projects. Run focused tests at the reviewed revision; report commands, results, and anything untested. Passing Checkstyle or coverage alone does not establish correctness.
 
-Return findings in impact order, each with an exact file/line, trigger or concrete example, consequence, and the smallest useful correction. Separate demonstrated defects, verified standard violations, and optional design suggestions. Tie design criticism to an actual maintenance or correctness cost. Use PR priorities only if requested or required by the review format; they are separate from PE labels. If there are no actionable findings, say so and state material verification gaps.
+Return an impact-ordered list or table of issues and violations. For each entry, include the exact file/line, applicable standard or contract, evidence/trigger, consequence, justified severity, and a concrete fix. Use the [catalogue's rating policy](references/review-issues.md#rating-policy): PE labels for eligible bugs, and explicitly advisory PR ratings for code-only concerns. Separate demonstrated defects, verified standard violations, and optional suggestions; keep plausible but unverified candidates separate with the check needed to confirm them. Tie design criticism to an actual maintenance or correctness cost. Use PR priorities only if requested or required by the review format; do not equate them with PE severity. If there are no actionable findings, say so and state material verification gaps.
 
 ## PE investigation and output
 
