@@ -1,6 +1,6 @@
 # Course review lenses and notes index
 
-Review guidance synthesized from the user's CS2103T course notes, with an index for consulting the original material when available.
+Review guidance synthesized from the user's CS2103T course notes and linked testing discussion, with an index for consulting the original notes when available.
 
 ## Design and code quality
 
@@ -23,15 +23,33 @@ From Weeks 5, 6, and 10: assertions check programmer assumptions and must not pe
 
 [Course testing](https://nus-cs2103-ay2627-s1.github.io/website/se-book-adapted/chapters/testing.html#testing)
 
-Unit tests check units, integration tests check interaction contracts, system tests check the specification, and acceptance tests check fitness for target users. Combine scripted critical workflows with exploratory probes. Isolate time/storage dependencies where useful. Measure the relevant coverage criterion; executed code alone does not establish correct assertions or complete requirements.
+Unit tests check units, integration tests check interaction contracts, system tests check the specification, and acceptance tests check fitness for target users. Isolate time/storage dependencies where useful. Measure the relevant coverage criterion; executed code alone does not establish correct assertions or complete requirements.
 
-From Weeks 8 and 10: derive equivalence partitions from the contract, including receiver state, arguments, and relevant external state. Include valid/invalid partitions and meaningful boundary and interior values. Vary one invalid factor at a time where useful so another failure does not mask the target check. Java type-impossible inputs are not missing unit cases, but malformed text can still reach a command parser. Consider empty/singleton/populated collections, missing/repeated prefixes, whitespace/case, filtered indices, and save/reload sequences when the feature supports them. Record setup, input, expected outcome, and observed outcome.
+From Weeks 8 and 10: derive equivalence partitions from the contract, including receiver state, arguments, and relevant external state. Include valid/invalid partitions and meaningful boundary and interior values. Vary one invalid factor at a time where useful so another failure does not mask the target check. Java type-impossible inputs are not missing unit cases, but malformed text can still reach a command parser.
+
+### Alpha, beta, and PE testing checklist
+
+Consolidated from [forum issue #720 and its seven comments](https://github.com/NUS-CS2103-AY2627-S1/forum/issues/720), checked on 28 October 2026. These are test ideas, not additional course requirements. Apply the [PE scope checks](pe.md#scope-checks-for-exploratory-tests) when selecting reportable findings.
+
+Read the UG and relevant DG sections first, including manual tests, user stories, examples, and limitations. Start with ordinary target-user workflows and compare actual results and feedback with the documented behavior. Then explore plausible mistakes and unspecified behavior; a specification can be followed exactly while still leaving a feature unsuitable for normal use. Expand documentation testing using the [documentation checks](#documentation-and-uml).
+
+Keep a reusable checklist of exact inputs and command sequences, starting data, expected and observed outcomes, and whether each case has run. Choose applicable probes from the table rather than assuming every app supports the same commands.
+
+| Area | Probes and checks |
+| --- | --- |
+| Field boundaries and display | Empty values; spaces-only input, tabs, and Unicode whitespace; leading/trailing or inter-parameter spaces; long strings with and without spaces; large numbers; invalid calendar dates and end-before-start ranges. Check validation, clipping/overlap, usability, and crashes. |
+| Prefixes and delimiters | Missing, repeated, unknown, or embedded prefixes, including `n/ n/` and `n/Alice Tan x/`. Compare literal-value handling, rejection, or ignored tokens with the documented grammar; unknown or repeated prefixes need not always be rejected. |
+| Identity and duplicates | Exact duplicates and case/whitespace variants such as `Alice`, `ALICE`, and ` Alice `. Assess duplicate warnings and stated limitations; equal names alone do not prove equal people. |
+| State and command interactions | Empty/singleton/populated collections; filter or sort before editing/deleting a displayed index; reordered actions, unmet prerequisites, repeats, and undo/redo where supported. Verify the intended record and history state after each step. |
+| Rejected commands | Capture the relevant data before an operation that mixes valid and invalid fields, such as a valid phone with an invalid email. After rejection, confirm all fields stayed unchanged, then run a harmless successful command and restart to detect a partial mutation saved later. Use a command such as `list` only if supported; verify the app's save behavior rather than assuming AB3's implementation is unchanged. Inspect saved data and console exceptions as supporting evidence. |
+| Persistence and escaping | Enter supported special characters such as backslashes, colons, and quotes through the app; save and reload to check round-trip integrity. Test manual data-file edits only against the support described in the PE scope checks. |
+| Target-user usefulness | Try realistic short names and local contact formats, including email constraints; an email domain without a dot is not universally invalid. Check whether normal work is blocked by restrictive validation, cumbersome command formats, or missing essential steps, even when behavior matches the UG. Explain the concrete workflow cost before proposing a feature-flaw report. |
 
 The Week 8 note's claim that full path coverage implies “bug free” is unsafe: missing requirements, incorrect oracles, and untested data can remain. Do not propagate it.
 
 ## Documentation and UML
 
-Check that user stories connect a role, goal, and benefit; use cases describe actor/system interactions with meaningful extensions; and NFRs have a clear, measurable scope. Architecture diagrams should emphasize component responsibilities and explain unfamiliar symbols.
+Check that user stories connect a role, goal, and benefit; use cases describe actor/system interactions with meaningful extensions; and NFRs have a clear, measurable scope. Cross-check these claims against the UG and product. Verify missing or incorrect steps, parameter constraints, runnable examples, success/error messages, documented limitations, and links in the rendered UG/DG. A message must explain the actual failure and a usable correction; a mere wording difference needs a concrete consequence. Architecture diagrams should emphasize component responsibilities and explain unfamiliar symbols. Check charts and diagrams against the described behavior and implementation where relevant.
 
 For UML findings, inspect the actual diagram and distinguish misleading notation from purposeful abstraction or optional omissions. Common checks:
 

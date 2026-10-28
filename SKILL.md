@@ -20,7 +20,7 @@ Read only the relevant resources:
 * [Review issue catalogue](references/review-issues.md) for code/PR issue patterns, severity ratings, and fixes.
 * [Course review lenses and notes index](references/course-notes.md) for design, tests, debugging, and UML. Use the bundled synthesis directly; no external notes folder is required.
 
-The references summarize all eight supplied sources for offline or quick use. When online, recheck administrative rules for an actual PE or grading decision, especially phases, limits, runtime, and submission instructions. Offline, continue with the summaries; flag decisions requiring uncached details or current rules. Use current course requirements over conflicting notes; project conventions fill gaps without silently overriding course requirements. Do not invent rules or mark deductions.
+The references summarize the linked course sources and forum guidance for offline or quick use. When online, recheck administrative rules for an actual PE or grading decision, especially phases, limits, runtime, and submission instructions. Offline, continue with the summaries; flag decisions requiring uncached details or current rules. Use current course requirements over conflicting notes; project conventions fill gaps without silently overriding course requirements. Do not invent rules or mark deductions.
 
 ## Temporary workspace
 
@@ -46,9 +46,9 @@ Return an impact-ordered list or table of issues and violations. For each entry,
 
 ## PE investigation and output
 
-Test the supplied release against its UG/DG and the target user's workflows. Source inspection suggests tests; behavior in a rebuilt checkout does not prove a defect in the supplied release. Label unexecuted candidates as hypotheses. Do not claim GUI behavior was observed when only source or logs were inspected.
+Test the supplied release against its UG/DG and the target user's workflows. Use the [testing checklist](references/course-notes.md#alpha-beta-and-pe-testing-checklist) for alpha, beta, and PE investigations, and the [PE scope checks](references/pe.md#scope-checks-for-exploratory-tests) before turning exploratory results into PE reports. Source inspection suggests tests; behavior in a rebuilt checkout does not prove a defect in the supplied release. Label unexecuted candidates as hypotheses. Do not claim GUI behavior was observed when only source or logs were inspected.
 
-Reproduce candidates from a stated starting state, reduce the steps, and separate independent defects. Keep disposable test data inside `<base>/tmp/`. For every proposed report, provide:
+Record findings as they occur, reproduce candidates from a stated starting state, reduce the steps, and separate independent defects. Keep disposable test data inside `<base>/tmp/`. For every proposed report, provide:
 
 * A title naming the observable failure.
 * Artifact/version, OS/runtime, initial data, and exact steps/inputs.
