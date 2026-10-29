@@ -19,8 +19,15 @@ Read only the relevant resources:
 * [Standards](references/standards.md) for Java, Git, Markdown, or documentation review.
 * [Review issue catalogue](references/review-issues.md) for code/PR issue patterns, severity ratings, and fixes.
 * [Course review lenses and notes index](references/course-notes.md) for design, tests, debugging, and UML. Use the bundled synthesis directly; no external notes folder is required.
+* [Use-case audit guide](references/use-cases.md) for reviewing actor/system workflows, MSS, extensions, preconditions, guarantees, and deriving behavioral bug probes.
 
 The references summarize the linked course sources and forum guidance for offline or quick use. When online, recheck administrative rules for an actual PE or grading decision, especially phases, limits, runtime, and submission instructions. Offline, continue with the summaries; flag decisions requiring uncached details or current rules. Use current course requirements over conflicting notes; project conventions fill gaps without silently overriding course requirements. Do not invent rules or mark deductions.
+
+## Use-case audits
+
+Use the [use-case audit guide](references/use-cases.md) when reviewing use cases or deriving tests from them. Check the externally observable actor goal, a self-contained MSS, meaningful alternatives, valid resume/end points, and any stated preconditions and guarantees against the UG and product. Trace code to explain a discrepancy, and reproduce the affected workflow before claiming a product bug.
+
+Match the use case's abstraction level. The course recommends intention-focused steps without UI mechanics or internal implementation details; it does not require every validation partition, exact error string, storage failure, or optional use-case element to be listed. Numbering is a convention. Keep source-backed guidance, project conventions, and optional editorial suggestions distinct, and justify findings by their behavioral or reader impact.
 
 ## Temporary workspace
 

@@ -51,6 +51,8 @@ The Week 8 note's claim that full path coverage implies “bug free” is unsafe
 
 Check that user stories connect a role, goal, and benefit; use cases describe actor/system interactions with meaningful extensions; and NFRs have a clear, measurable scope. Cross-check these claims against the UG and product. Verify missing or incorrect steps, parameter constraints, runnable examples, success/error messages, documented limitations, and links in the rendered UG/DG. A message must explain the actual failure and a usable correction; a mere wording difference needs a concrete consequence. Architecture diagrams should emphasize component responsibilities and explain unfamiliar symbols. Check charts and diagrams against the described behavior and implementation where relevant.
 
+For use cases, apply the source-backed [use-case audit guide](use-cases.md). Review externally visible intentions, a complete MSS, meaningful extension flows, and stated preconditions/guarantees. Respect the selected abstraction level: numbering is conventional, optional elements are not mandatory, and exhaustive parser or implementation details are not required.
+
 For UML findings, inspect the actual diagram and distinguish misleading notation from purposeful abstraction or optional omissions. Common checks:
 
 * Class diagrams: solid associations, dashed dependencies, hollow generalization triangles pointing to the parent, and aggregation/composition diamonds at the whole end. Missing multiplicity means unspecified, not automatically one. Object diagrams show underlined `instance:Class` labels and concrete links rather than class multiplicities.
@@ -71,4 +73,3 @@ Consult this index only if the user supplies the original notes. Otherwise skip 
 | Test levels and coverage | `Week 8/Week 8 - Drawing Diagrams and Testing.md`: §§8.4–8.5 |
 | Architecture and principles | `Week 9/Week 9 - Conceptual Class, Activity, Architecture Diagrams; SDLC and Writing Developer Documents.md`: §§9.4–9.5 |
 | Defensive coding and test design | `Week 10/Week 10 - Design Patterns, Defensive Programming and Test Cases.md`: §§10.2–10.5; `Week 10/Week 10 Briefing.md` |
-
