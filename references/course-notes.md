@@ -55,6 +55,8 @@ For use cases, apply the source-backed [use-case audit guide](use-cases.md). Rev
 
 For UML findings, inspect the actual diagram and distinguish misleading notation from purposeful abstraction or optional omissions. Common checks:
 
+For sequence and architecture reviews, use the [diagram audit guide](diagram-audits.md), including the T10 tutorial lessons on abstraction levels, actual receiver/message semantics, accepted PlantUML limitations, and cross-component facade bypasses.
+
 * Class diagrams: solid associations, dashed dependencies, hollow generalization triangles pointing to the parent, and aggregation/composition diamonds at the whole end. Missing multiplicity means unspecified, not automatically one. Object diagrams show underlined `instance:Class` labels and concrete links rather than class multiplicities.
 * Sequence diagrams: follow message order, lifelines, and activation/creation/destruction against the described interaction; distinguish calls from dashed returns. Avoid demanding every low-level call or optional return.
 * Activity diagrams: distinguish guarded alternatives and merges from parallel forks and joins. Check that paths and guards match the intended workflow.
