@@ -55,6 +55,8 @@ Return an impact-ordered list or table of issues and violations. For each entry,
 
 Test the supplied release against its UG/DG and the target user's workflows. Use the [testing checklist](references/course-notes.md#alpha-beta-and-pe-testing-checklist) for alpha, beta, and PE investigations, and the [PE scope checks](references/pe.md#scope-checks-for-exploratory-tests) before turning exploratory results into PE reports. Source inspection suggests tests; behavior in a rebuilt checkout does not prove a defect in the supplied release. Label unexecuted candidates as hypotheses. Do not claim GUI behavior was observed when only source or logs were inspected.
 
+Before classifying candidates, read [what bugs to report](references/pe.md#what-bugs-to-report-part-c) and the [triaging guidance](references/pe.md#guidelines-for-determining-bugs). For feature flaws, apply the [feature-flaw triage](references/pe.md#triaging-feature-flaw-bugs) even when behavior matches the UG: establish the normal target-user task, concrete harm, and whether a scope defence survives the essential-usefulness and low-additional-effort exceptions. For documentation, inspect the rendered page and explain the obstacle to its intended reader; use the separate UG/DG checks rather than treating every omission as a bug.
+
 Record findings as they occur, reproduce candidates from a stated starting state, reduce the steps, and separate independent defects. Keep disposable test data inside `<base>/tmp/`. For every proposed report, provide:
 
 * A title naming the observable failure.
